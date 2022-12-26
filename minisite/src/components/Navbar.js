@@ -3,24 +3,25 @@ import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css"
 
 const Navbar = () => {
-  return <nav>
-    <NavLink to="/">
+  return (
+  <nav className={styles.navbar}>
+    <NavLink to="/" className={styles.brand}>
         Mini <span>Site</span>
     </NavLink>
-    <ul>
+    <ul className={styles.link_list}>
         <li>
-            <NavLink to="/">
+            <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Home
             </NavLink>
             
         </li>
         <li>
-            <NavLink to="/about">
+            <NavLink to="/about" className={({ isActive }) => (isActive ? styles.active : "")}>
                 About
             </NavLink>
         </li>
     </ul>
-  </nav>
+  </nav>)
 }
 
 export default Navbar
