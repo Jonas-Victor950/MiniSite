@@ -7,7 +7,6 @@ import {
   onSnapshot,
   where,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   const [documents, setDocuments] = useState(null);
@@ -28,7 +27,11 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
       try {
         let q;
         if (search) {
-          q = await query(collectionRef, where("tagsArray", "array-contains", search), orderBy("createdAt", "desc"))
+          q = await query(
+            collectionRef,
+            where("tagsArray", "array-contains", search),
+            orderBy("createdAt", "desc")
+          );
         } else {
           q = await query(collectionRef, orderBy("createdAt", "desc"));
         }
@@ -51,7 +54,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
       }
     }
     loadData();
-  }, [docCollection, search, uid, cancelled]);
+  }, [docCollection, documents, search, uid, cancelled]);
 
   useEffect(() => {
     return () => setCancelled(true);
