@@ -37,9 +37,9 @@ export const useUpdateDocument = (docColletion) => {
       type: "LOADING",
     });
     try {
-      const docRef = await doc(db, docColletion, id)
+      const docRef = await doc(db, docColletion, id);
 
-      const updatedDocument = await updateDoc(docRef, data)
+      const updatedDocument = await updateDoc(docRef, data);
 
       checkCancelBeforeDispatch({
         type: "UPDATED_DOC",
@@ -48,14 +48,14 @@ export const useUpdateDocument = (docColletion) => {
     } catch (error) {
       checkCancelBeforeDispatch({
         type: "ERROR",
-        payload: error.message
+        payload: error.message,
       });
     }
   };
 
   useEffect(() => {
-    return () => setCancelled(true)
-  }, [])
+    return () => setCancelled(true);
+  }, []);
 
-  return {updateDocument, response}
+  return { updateDocument, response };
 };

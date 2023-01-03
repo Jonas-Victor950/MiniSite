@@ -16,7 +16,7 @@ const CreatePost = () => {
 
   const { insertDocument, response } = useInsertDocument("posts");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,8 +33,8 @@ const CreatePost = () => {
     const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
     // checar todos os valores
-    if(!title || !image || !tags || !body) {
-      setFormError("Por favor, preencha todos os campos!!")
+    if (!title || !image || !tags || !body) {
+      setFormError("Por favor, preencha todos os campos!!");
     }
 
     if (formError) return;
@@ -49,7 +49,7 @@ const CreatePost = () => {
     });
 
     // redirect to home page
-    navigate("/")
+    navigate("/");
   };
   return (
     <div className={styles.create_post}>

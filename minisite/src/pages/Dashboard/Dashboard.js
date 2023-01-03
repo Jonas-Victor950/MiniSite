@@ -14,12 +14,11 @@ const Dashboard = () => {
   // posts do usuário
   const { documents: posts, loading } = useFetchDocuments("posts", null, uid);
 
-  const { deleteDocument } = useDeleteDocument("posts")
+  const { deleteDocument } = useDeleteDocument("posts");
 
-  
-    if (loading) {
-      return <p>Carregando...</p>;
-    }
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
 
   return (
     <div className={styles.dashboard}>
